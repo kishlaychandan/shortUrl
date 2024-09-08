@@ -13,20 +13,19 @@ export const shortTheUrl = async (req, res) => {
         const urlObj = await new UrlModel({ originalUrl: url, shortedUrl: uniqueId }).save();
         res.status(200).json({
             message: "shorted link is generated",
-            link: `https://url-shortner-pzq3.onrender.com/api/${uniqueId}`
+            link: `https://shorturl-snvl.onrender.com/api/${uniqueId}`
         });
     }
 }
 
 export const getOriginalUrl = async (req, res) => {
     const shortUrl = req.params.shortUrl;
-    console.log("shortUrl",shortUrl);
-    
-    const urlObj = await UrlModel.findOne({ shortedUrl: shortUrl }); 
-    console.log("urlObj",urlObj)
 
+    const urlObj = await UrlModel.findOne({ shortedUrl: shortUrl }); 
+    console.log(urlObj)
     if (urlObj) {
         console.log(urlObj.originalUrl);
+        
         res.redirect(urlObj.originalUrl);
     } else {
         res.status(404).json({ message: "Shortened URL not found" });
