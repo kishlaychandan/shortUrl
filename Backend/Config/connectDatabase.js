@@ -1,5 +1,6 @@
 import { set, connect } from 'mongoose';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const connectDB = async () => {
     console.log("Connecting to MongoDB...");
 
@@ -8,7 +9,7 @@ const connectDB = async () => {
 
     try {
         // Directly use the MongoDB URI instead of an environment variable
-        const conn = await connect("mongodb://127.0.0.1:27017/shortUrl");
+        const conn = await connect(process.env.MONGO_URI);
 
 
         console.log(`MongoDB Connected: ${conn.connection.host}`);
