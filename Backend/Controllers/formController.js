@@ -13,7 +13,7 @@ export const shortTheUrl = async (req, res) => {
         const urlObj = await new UrlModel({ originalUrl: url, shortedUrl: uniqueId }).save();
         res.status(200).json({
             message: "shorted link is generated",
-            link: `https://shorturl-snvl.onrender.com/api/${uniqueId}`
+            link: `https://url-shortner-pzq3.onrender.com/api/${uniqueId}`
         });
     }
 }
